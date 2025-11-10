@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package main;
+
+// Mensagens de retorno
+message NumResult {
+    int32 result = 1;
+}
+
+message TaskResult {
+    int32 status = 1;
+    string solution = 2;
+    int32 challenge = 3;
+}
+
+message TxnId {
+    int32 transactionId = 1;
+}
+
+message TaskRequest {
+    int32 transactionId = 1;
+    int32 clientId = 2;
+    string solution = 3;
+}
+
+message Empty {}
+
+service Mine {
+
+    rpc getTransactionId(Empty) returns (NumResult);
+    rpc getChallenge(TxnId) returns (NumResult);
+    rpc getTransactionStatus(TxnId) returns (NumResult);
+    rpc submitChallenge(TaskRequest) returns (NumResult);
+    rpc getWinner(TxnId) returns (NumResult);
+    rpc getSolution(TxnId) returns (TaskResult);
+    rpc registerClient(Empty) returns (NumResult);
+}

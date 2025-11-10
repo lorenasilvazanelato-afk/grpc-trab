@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package calculadora;
+
+message ResultadoInteiro {
+    int32 valor = 1;
+}
+
+message Argumentos {
+    int32 primeiro = 1;
+    int32 segundo = 2;
+}
+
+message OperacaoDecimal {
+    float a = 1;
+    float b = 2;
+}
+
+message ResultadoDecimal {
+    float resultado = 1;
+}
+
+service CalculadoraService {
+    rpc Somar(OperacaoDecimal) returns (ResultadoDecimal);
+    rpc Subtrair(OperacaoDecimal) returns (ResultadoDecimal);
+    rpc Multiplicar(OperacaoDecimal) returns (ResultadoDecimal);
+    rpc Dividir(OperacaoDecimal) returns (ResultadoDecimal);
+}
