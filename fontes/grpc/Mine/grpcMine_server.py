@@ -17,6 +17,7 @@ _log_winners = []
 
 def make_challenge():
     val = random.randint(1, 5)
+    # Setado dificulade de 1 até 5, acima disso o cliente pode demorar para minerar
     print(f"[DEBUG] Desafio criado: {val}")
     return val
 
